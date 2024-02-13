@@ -2,8 +2,7 @@
 ## Bash scrip to set up web servers to deploy web_static
 sudo apt-get update
 sudo apt-get install nginx
-sudo mkdir /data/web_static/shared/
-sudo mkdir /data/web_static/releases/test/
+sudo mkdir -p /data/web_static/releases/test/ /data/web_static/shared/
 sudo echo "Holberton school" |sudo tee /data/web_static/releases/test/index.html
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current/
 sudo chown -R ubuntu:ubuntu /data/
