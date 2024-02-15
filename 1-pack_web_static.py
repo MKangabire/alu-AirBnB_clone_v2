@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""decompresses and compresses"""
+
 from fabric import task
 from fabric.context_managers import cd
 from fabric.operations import local
