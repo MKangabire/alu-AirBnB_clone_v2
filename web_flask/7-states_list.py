@@ -17,6 +17,8 @@ def teardown(exception):
 def states_list():
     """Returns a JSON list of all State objects"""
     states = storage.all("State").values()
+    if not states:
+        return 'No states found', 500
     sorted_states = sorted(states, key=lambda state: state.name)
     return render_template('7-states_list.html', states=sorted_states)
 
