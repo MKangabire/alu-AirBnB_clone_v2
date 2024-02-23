@@ -59,7 +59,7 @@ def var_num_even_odd(n):
         """
             function to display even or odd number
         """
-        number_type = "odd" if n % 2 != 0 else "even"
-        return render_template("6-number_odd_or_even.html", n=n, number_type=number_type)
+        num = "odd" if n % 2 != 0 else "even"
+        return render_template("6-number_odd_or_even.html", n=n, num=number)
 if __name__ == '__main__':
         app.run(host='0.0.0.0', port=5000)
