@@ -1,26 +1,27 @@
 #!/usr/bin/python3
-"""Starts a Flask web application"""
-
-from flask import Flask, jsonify
+"""
+    Sript that starts a Flask web application
+"""
+from flask import Flask, render_template
 from models import storage
-
 app = Flask(__name__)
 
 
 @app.teardown_appcontext
-def teardown(exception):
-    """Removes the current SQLAlchemy Session"""
+def handle_teardown(self):
+    """
+        method to handle teardown
+    """
     storage.close()
 
 
-@app.route('/states_list', methods=['GET'])
-def states_list():
-    """Returns a JSON list of all State objects"""
-    states = storage.all("State").values()
-    if not states:
-        return 'No states found', 500
-    sorted_states = sorted(states, key=lambda state: state.name)
-    return render_template('7-states_list.html', states=sorted_states)
+@app.route('/states_list', strict_slashes=False)
+def state_list():
+    """
+        method to render states
+    """
+    states = storage.all('State').values()
+    return render_template("7-states_list.html", states=states)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+        app.run(host='0.0.0.0', port=5000)
